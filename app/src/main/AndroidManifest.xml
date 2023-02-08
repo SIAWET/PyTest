@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PyTest"
         tools:targetApi="31">
-        <service
-            android:name=".SaiwetIntentService"
-            android:exported="false"></service>
 
         <activity
             android:name=".app.test.TestActivity"
