@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="area">
+        <item>国区</item>
+        <item>阿根廷区</item>
+        <item>俄罗斯区</item>
+    </string-array>
+
+    <string-array name="areaCUST">
+        <item>阿根廷区</item>
+        <item>俄罗斯区</item>
+        <item>土耳其区</item>
+        <item>巴西区</item>
+        <item>香港区</item>
+        <item>美国区</item>
+        <item>日本区</item>
+    </string-array>
+</resources>

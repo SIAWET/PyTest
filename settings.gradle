@@ -1,0 +1,55 @@
+pluginManagement {//插件管理
+    repositories {//搜索或下载Gradle插件的仓库依赖
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        mavenCentral()
+        google()
+        maven { url "https://www.jitpack.io" }
+        maven { url 'https://repo1.maven.org/maven2/' }  //友盟统计 Maven地址
+        maven { url "https://mvn.mob.com/android" }  // 添加MobTech Maven地址
+        jcenter()
+
+    }
+}
+dependencyResolutionManagement {
+    /**
+     * 存储库模式：
+     * PREFER_PROJECT --首选项目远程仓库
+     * PREFER_SETTINGS--首选settings远程仓库
+     * FAIL_ON_PROJECT_REPOS--强制settings远程仓库
+     */
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        mavenCentral()
+        google()
+        maven { url "https://www.jitpack.io" }
+        maven { url 'https://repo1.maven.org/maven2/' }  //友盟统计 Maven地址
+        maven { url "https://mvn.mob.com/android" }  // 添加MobTech Maven地址
+        jcenter()
+
+    }
+}
+
+/*maven {
+如果使用了http，需要在maven中配置allowInsecureProtocol = true
+    allowInsecureProtocol = true
+    url 'https://maven.aliyun.com/repository/central'
+    url 'https://maven.aliyun.com/repository/google'
+    url 'https://maven.aliyun.com/repository/public'
+    url 'https://maven.aliyun.com/repository/gradle-plugin'
+    url 'https://maven.aliyun.com/repository/apache-snapshots'
+    url "https://www.jitpack.io"
+    url 'https://repo1.maven.org/maven2/' //友盟统计 Maven地址
+    url "https://mvn.mob.com/android" // 添加MobTech Maven地址
+
+}*/
+rootProject.name = "PyTest"//根工程的名字
+include ':app'//包含的子模块

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 边框颜色值 -->
+    <item>
+        <shape>
+            <solid android:color="@color/text_black"/>
+            <corners android:radius="2dp"/>
+        </shape>
+    </item>
+    <!-- 圆角背景颜色值  在item中的top与bottom各指定了1dp的边框线-->
+    <item android:top="1px" android:bottom="1px" android:left="1px" android:right="1px">
+        <shape>
+            <solid android:color="@color/text_black"/>
+            <corners android:radius="2dp"/>
+        </shape>
+    </item>
+</layer-list>

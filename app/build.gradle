@@ -1,0 +1,185 @@
+plugins { //必须在第一行，配置gradle插件
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+//apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-parcelize'
+//apply plugin: 'kotlin-kapt'
+
+android { //配置android构建选项
+    namespace 'com.example.pytest'
+    compileSdk 32  //编译应用程序时应使用的Android API级别
+
+    defaultConfig {  //声明默认配置。封装所有构建变体的默认设置和条目，并可以覆盖main/AndroidManifest中的某些属性
+        applicationId "com.example.pytest"  //包名
+        minSdk 21 //最小支持的API级别
+        targetSdk 32 //用于测试应用程序的API级别
+        versionCode 1 //版本号
+        versionName "1.0" //版本名
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" //测试环境
+
+        //多dex分包 解决引用了多个jar包，导致Dalvik Executable (DEX)文件的总方法数超出65536的限制,如com.mob.commons.MOBAPM编译报错
+        multiDexEnabled true
+    }
+    //默认情况下，Android Studio使用minifyEnabled配置发布版本类型以启用代码收缩，并指定默认的Proguard混淆规则文件。
+    buildTypes { //build 类型
+        release { //发布版本
+            minifyEnabled false  //是否启动混淆 ture:打开   false:关闭
+            //混淆规则文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions { //编译选项
+        //编译.java文件的jdk版本
+        sourceCompatibility JavaVersion.VERSION_1_8
+        //确保生成的类文件与targetCompatible指定的VM兼容
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding false
+    }
+    dataBinding {
+        enabled = false
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    //重构资源目录
+    sourceSets {//代码源文件配置。可以列出多个目录，Gradle将使用所有目录来收集
+        main {//封装main代码集的配置
+            //资源文件源的目录。默认目录是“src/main/res”。
+            //由于Gradle赋予这些目录同等的优先级，如果在多个目录中定义相同的资源，则在合并资源时会出现错误。
+            res.srcDirs = ['src/main/res/layouts/dialog',
+                           'src/main/res/layouts/fragment',
+                           'src/main/res/layouts/item',
+                           'src/main/res/layouts/activity',
+                           'src/main/res/layouts/widget',
+                           'src/main/res/layouts/other',
+                           'src/main/res/layout',
+                           'src/main/res']
+            //更改Java源的目录。默认是 'src/main/java'.
+            //java.srcDirs = ['other/java']
+            //aidl文件源的目录。默认目录是“src/main/aidl”。
+            //aidl.srcDirs = ['src/main/aidl', 'other/aidl']
+            //默认情况下，Android Studio为main源创建AndroidManifest，设置在src/main/目录中。
+            //manifest.srcFile 'other/AndroidManifest.xml'
+        }
+    }
+
+/*    //如果声明产品变种，还必须声明产品的维度，并将每个变种分配给一个维度。
+    flavorDimensions "product" //声明产品的维度
+    //创建应用程序的不同版本，这些版本可以使用自己的设置覆盖defaultConfig块。
+    //产品变种是可选的，默认情况下构建系统不会创建它们。
+    productFlavors {//配置多种产品变种
+        A { //产品变种
+            dimension "product" //产品维度
+            applicationId 'com.android.a' //重新声明的包名
+        }
+
+        B { //产品变种
+            dimension "product"
+            applicationId 'com.android.b'
+        }
+    }*/
+
+}
+//   全写为  implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.13.2'
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // AndroidX Test - Instrumented testing
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+//    testImplementation 'org.testng:testng:6.9.6'
+
+    //AndroidXTest-JVMtesting
+//    testImplementation "androidx.test:core-ktx:1.4.0"
+//    testImplementation "org.robolectric:robolectric"
+//    testImplementation "androidx.test.ext:junit:1.1.3"
+
+    //多dex分包
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // ViewPager2 需要单独引入
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    implementation 'com.alibaba:fastjson:2.0.14.graal'
+
+    //rxjava
+    implementation "io.reactivex.rxjava2:rxjava:2.1.11"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+    //retrofit2
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.3.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+
+    //解决Rxjava异步内存泄漏
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
+
+    //eventbus
+    implementation "org.greenrobot:eventbus:3.0.0"
+
+    //fresco
+    implementation 'com.facebook.fresco:fresco:2.6.0'
+    //加载gif动图需添加此库
+    implementation 'com.facebook.fresco:animated-gif:2.6.0'
+    //加载webp动图需添加此库
+    implementation 'com.facebook.fresco:animated-webp:2.6.0'
+    //支持webp需添加此库
+    implementation 'com.facebook.fresco:webpsupport:2.6.0'
+    //网络实现层使用okhttp3需添加此库
+    implementation 'com.facebook.fresco:imagepipeline-okhttp3:2.6.0'
+    //用于提供fresco的各种图片变换
+    implementation 'jp.wasabeef:fresco-processors:2.2.1@aar'
+
+    //内存泄漏检测
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2' //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2' //没有使用特殊Header，可以不加这行
+
+    implementation 'androidx.emoji:emoji:1.1.0'
+    implementation "androidx.emoji:emoji-bundled:1.1.0"
+    implementation "androidx.emoji:emoji-appcompat:1.1.0"
+
+    // 实现了图片缩放的库
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@jar'
+
+    // GSYVideoPlayer完整版引入
+    //implementation 'com.shuyu:GSYVideoPlayer:7.1.2'
+}

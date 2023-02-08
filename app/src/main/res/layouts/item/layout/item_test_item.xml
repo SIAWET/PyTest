@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/draft"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/dp_44">
+
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_29"
+        android:text="title"
+        android:textColor="@color/text_littlegray"
+        android:textSize="@dimen/sp_10"
+        android:ellipsize="end"
+        android:maxEms="21"
+        android:singleLine="true"/>
+
+    <TextView
+        android:id="@+id/item_deleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_25"
+        android:text="删除"
+        android:textColor="@color/text_red"
+        android:textSize="@dimen/sp_12" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:background="@color/line_gray" />
+</RelativeLayout>

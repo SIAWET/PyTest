@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 圆形图片-->
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="FlikerProgressBar">
+        <attr name="barTextSize" format="dimension" />
+        <attr name="loadingColor" format="color" />
+        <attr name="stopColor" format="color" />
+        <attr name="barRadius" format="dimension" />
+        <attr name="borderWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomTextTitleCircle">
+        <attr name="redTipsVisibility">
+            <enum name="invisible" value="0"></enum>
+            <enum name="visible" value="1"></enum>
+            <enum name="gone" value="2"></enum>
+        </attr>
+    </declare-styleable>
+    <!--  九宫格样式  -->
+    <declare-styleable name="NineGridViewGroup">
+        <!-- 大小 -->
+        <attr name="ngv_singleMediaSize" format="dimension"/>
+        <!-- 比率，常用宽高比 -->
+        <attr name="ngv_singleMediaRatio" format="float"/>
+        <attr name="ngv_gridSpacing" format="dimension"/>
+        <attr name="ngv_maxSize" format="integer"/>
+        <attr name="ngv_mode" format="enum">
+            <enum name="fill" value="0"/>
+            <enum name="grid" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ExpandTextView">
+        <attr name="showLines" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PraiseListView">
+        <attr name="item_color" format="color" />
+        <attr name="item_selector_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="NineGridLayout">
+        <attr name="sapcing" format="dimension" />
+    </declare-styleable>
+</resources>

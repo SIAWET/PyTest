@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">PyTest</string>
+
+    <string name="app">SteamPY</string>
+
+    <string name="app_name_market">SteamPY</string>
+
+    <string name="crash_error">程序喝醉了，已经崩溃了......</string>
+    <string name="exit_main">请再点击一次退出应用</string>
+    <string name="tab_buy">购买</string>
+    <string name="tab_sell">出售</string>
+    <string name="tab_act">澡堂</string>
+    <string name="tab_me">个人</string>
+
+    <string name="tab_hotgame">热门游戏</string>
+    <string name="tab_py">代购市场</string>
+    <string name="tab_cdk">CDKey</string>
+    <string name="tab_charge">Steam充值</string>
+    <string name="phone">手机号码</string>
+    <string name="phoneHint">请输入手机号码</string>
+    <string name="phoneCode">验证码</string>
+    <string name="phoneCodeHint">请输入短信验证码</string>
+    <string name="sendCode">发送验证码</string>
+    <string name="login">登录/注册</string>
+    <string name="login_info">《用户协议》</string>
+    <string name="login_info2">《网站隐私条款》</string>
+    <string name="login3">和</string>
+    <string name="login_info4">我已阅读并同意</string>
+    <string name="phone_empty">手机号码输入不能为空</string>
+    <string name="net_error">网络请求失败</string>
+    <string name="verify_picture">验证图片</string>
+    <string name="code">图片验证码</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确认</string>
+    <string name="pic_empty">图片验证码输入不为空</string>
+    <string name="sms_empty">手机验证码输入不能为空</string>
+    <string name="sm_empty">是否同意SteamPy免责声明,隐私条款</string>
+    <string name="phone_error">请输入正确手机号码</string>
+
+    <string name="charge_info">充值说明</string>
+    <string name="charge_order">充值订单</string>
+    <string name="qun">如有任何问题，加入官方QQ群 %1$s 询问相关管理员</string>
+    <string name="pay">支付</string>
+    <string name="verify_pay">支付确认</string>
+    <string name="verify_pay_type">%1$s支付订单金额</string>
+    <string name="charge_ok">若有问题，请加入官方QQ群 %1$s 询问相关管理员</string>
+
+    <string name="me">个人中心</string>
+
+    <string name="update_late">下次再说</string>
+    <string name="update_now">立即</string>
+    <string name="size">大小: %1$s</string>
+    <string name="version">版本:  %1$s</string>
+    <string name="versiontime">时间</string>
+
+    <string name="update_again">重新下载</string>
+    <string name="update_over">安装中，请等待</string>
+    <string name="update_down">立即更新</string>
+    <string name="update_continue">继续</string>
+    <string name="update_downing">下载中&#160;</string>
+
+    <string name="verify_login_url">%1$s</string>
+    <string name="user_queue">此卖家前方还有     %1$s    位正在排队等待交易，请耐心等候,或者退出当前页面,在个人->买家.订单查看当前购买结果状态</string>
+    <string name="user_queue_seven">此卖家前方还有     %1$s    位正在排队等待交易，请耐心等候,或者退出当前页面,在个人->买家.七天购订单查看当前购买结果状态</string>
+
+    <string name="version_no">版本号: %1$s </string>
+    <string name="permission">.需要获取相机权限\n.需要访问相册权限</string>
+
+    <string name="search_transition_name">transition_reveal</string>
+    <string name="search_hint_text">请输入游戏名称</string>
+    <string name="py_game_info">平台参考价</string>
+    <string name="py_game_low_info">平台最低价</string>
+
+    <string name="cdk_fee_info"> 平台手续费%1$s ,出售后实际到账金额 = %2$s</string>
+    <string name="comment_time">发布于 %1$s</string>
+    <string name="comment_game_amount">游戏数量  %1$s</string>
+    <string name="comment_game_time">总游戏时长  %1$s</string>
+    <string name="comment_game_vote_up">有 %1$s 人觉得这篇评测有价值  </string>
+    <string name="comment_game_vote_fun">有 %1$s 人觉得这篇评测很欢乐  </string>
+    <string name="feedback_info">用户反馈仅用于提交系统BUG，如有任何订单相关问题,请加入官方QQ群：%1$s 私聊相关管理员进行处理</string>
+
+    <string name="sell_cn_info">只支持国区Steam账号 请关闭家长监护</string>
+    <string name="sell_area_title">SteamPY-%1$s</string>
+    <string name="sell_area_account">只支持 %1$s Steam账号,请关闭家长监护</string>
+    <string name="discount">%s%%</string>
+
+    <string name="selector_image">图片</string>
+    <string name="selector_send">确定</string>
+    <string name="selector_preview">预览</string>
+    <string name="selector_select">选择</string>
+    <string name="selector_image_num">%d张</string>
+    <string name="selector_all_image">全部图片</string>
+    <string name="selector_this_today">今天</string>
+    <string name="selector_this_week">本周</string>
+    <string name="selector_this_month">本月</string>
+    <string name="selector_confirm">确定</string>
+    <string name="selector_cancel">取消</string>
+    <string name="selector_hint">提示</string>
+    <string name="selector_permissions_hint">该相册需要赋予访问存储和拍照的权限，请到“设置”>“应用”>“权限”中配置权限。</string>
+
+    <string name="download_url">下载地址出现异常.</string>
+
+    <string name="chat_invite_info">邀请码获取方式 \n
+想参与请加入官方扣扣群  %1$s </string>
+    <string name="select">%1$s/%2$s</string>
+    <string name="drafts">草稿箱</string>
+</resources>
