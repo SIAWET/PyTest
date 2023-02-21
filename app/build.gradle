@@ -26,6 +26,13 @@ android { //配置android构建选项
 
         //多dex分包 解决引用了多个jar包，导致Dalvik Executable (DEX)文件的总方法数超出65536的限制,如com.mob.commons.MOBAPM编译报错
         multiDexEnabled true
+
+        /*javaCompileOptions {//配置编译时 java 的一些参数，例如我们使用 annotationProcessor 时所需要的参数。//Arouter路由配置
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }*/
+
     }
     //默认情况下，Android Studio使用minifyEnabled配置发布版本类型以启用代码收缩，并指定默认的Proguard混淆规则文件。
     buildTypes { //build 类型
@@ -52,6 +59,8 @@ android { //配置android构建选项
         jvmTarget = '1.8'
     }
 
+
+
     //重构资源目录
     sourceSets {//代码源文件配置。可以列出多个目录，Gradle将使用所有目录来收集
         main {//封装main代码集的配置
@@ -73,11 +82,123 @@ android { //配置android构建选项
             //manifest.srcFile 'other/AndroidManifest.xml'
         }
     }
-
+    /*
+    signingConfigs {// 签名配置
+        release {// 发布版签名配置
+            storeFile file("fk.keystore") // 密钥文件路径
+            storePassword "123456" // 密钥文件密码
+            keyAlias "fk" // key别名
+            keyPassword "123456" // key密码
+        }
+        debug {// debug版签名配置
+            storeFile file("fk.keystore")
+            storePassword "123456"
+            keyAlias "fk"
+            keyPassword "123456"
+        }
+    }*//*
+       // 指定生成安装文件的配置，常有两个子包:release,debug，注：直接运行的都是debug安装文件
+    buildTypes {
+        // release版本的配置，即生成正式版安装文件的配置
+        release {
+            zipAlignEnabled true  // 是否支持zip
+            shrinkResources true  // 移除无用的resource文件
+            minifyEnabled false // 是否对代码进行混淆，true表示混淆
+            // 指定混淆时使用的规则文件；
+            // proguard-android.txt指所有项目通用的混淆规则，proguard-rules.pro当前项目特有的混淆规则
+            // release的Proguard默认为Module下的proguard-rules.pro文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false  //是否支持调试
+            //ndk的一些配置
+            ndk {
+                // cFlags "-std=c++11 -fexceptions -O3 -D__RELEASE__" // C++11
+                // platformVersion = "19"
+                moduleName "hebbewifisafe" // 设置库(so)文件名称
+                ldLibs "log", "z", "m", "jnigraphics", "android"
+                // 引入库，比如要用到的__android_log_print
+                abiFilters "armeabi", "x86", "armeabi-v7a"// "x86"
+                cFlags "-std=c++11 -fexceptions" // C++11
+                stl "gnustl_static"
+            }
+            // 采用动态替换字符串的方式生成不同的 release.apk （3.0之后版本的修改方式）
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    if (!variant.buildType.isDebuggable()) {
+                        // 获取签名的名字 variant.signingConfig.name
+                        // 要被替换的源字符串
+                        def sourceFile = "app-release";
+                        // 替换的字符串
+　　　　　　　　　　　　　　def replaceFile = "Demo-V${variant.versionName}.${releaseTime()}"
+　　　　　　　　　　　　　　outputFileName = output.outputFile.name.replace(sourceFile, replaceFile)
+                    }
+                }
+            }
+            jniDebuggable false  // 关闭jni调试
+        }
+        debug { // debug版本的配置
+            minifyEnabled false
+            zipAlignEnabled true
+            shrinkResources true // 移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+//          jniDebuggable true
+            ndk {
+                cFlags "-std=c++11 -fexceptions -g -D __DEBUG__" // C++11
+            }
+            jniDebuggable true
+        }
+    }*/
+    /*// multiDex的一些相关配置，这样配置可以让你的编译速度更快
+    dexOptions {
+        // 让它不要对Lib做preDexing
+        preDexLibraries = false
+        // 开启incremental dexing,优化编译效率，这个功能android studio默认是关闭的。
+        incremental true
+        javaMaxHeapSize "4g" // 增加java堆内存大小
+    }*/
+    /* // 默认的一些文件路径的配置
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml' // 指定清单文件
+            res.srcDirs = ['res'] // 指定res资源目录
+            assets.srcDirs = ['assets']    // asset资源目录
+            jni.srcDirs 'src/main/jni'     // jni代码目录
+            jniLibs.srcDir 'src/main/jniLibs' // jni库目录
+            java.srcDirs = ['src'] // 指定java源代码目录
+            resources.srcDirs = ['src'] // 指定resource目录
+            aidl.srcDirs = ['src'] // 指定aidl目录
+            renderscript.srcDirs = ['src'] // 指定source目录
+        }
+        debug.setRoot('build-types/debug') // 指定debug模式的路径
+        release.setRoot('build-types/release') // 指定release模式的路径
+    }*/
+    /*
+    //关闭Android Studio的PNG合法性检查
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    // 程序在编译的时候会检查lint，有任何错误提示会停止build，我们可以关闭这个开关
+    lintOptions {//协助我们发现项目中代码质量问题
+        // 即使报错也不会停止打包
+        abortOnError false
+        // 打包release版本的时候是否进行检测 在 release 版本是否检查 fatal 类型错误，默认release版本为开启。开启后，检查到 fatal 类型错误则会关闭
+        checkReleaseBuilds false
+    }*/
 /*    //如果声明产品变种，还必须声明产品的维度，并将每个变种分配给一个维度。
     flavorDimensions "product" //声明产品的维度
     //创建应用程序的不同版本，这些版本可以使用自己的设置覆盖defaultConfig块。
     //产品变种是可选的，默认情况下构建系统不会创建它们。
+    productFlavors {
+        // 在这里你可以设置你的产品发布的一些东西，
+        // 比如你现在一共软件需要发布到不同渠道，
+        // 且不同渠道中的包名不同，那么可以在此进行配置；
+        // 甚至可以设置不同的 AndroidManifest.xml 文件。
+        hebbe {
+        }
+        googlePlay {
+        }
+        solo {
+        }
+    }
     productFlavors {//配置多种产品变种
         A { //产品变种
             dimension "product" //产品维度
@@ -88,7 +209,16 @@ android { //配置android构建选项
             dimension "product"
             applicationId 'com.android.b'
         }
-    }*/
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+    // 所谓ProductFlavors其实就是可定义的产品特性，
+    // 配合 manifest merger 使用的时候就可以达成在一次编译
+    // 过程中产生多个具有自己特性配置的版本。
+    // 上面这个配置的作用就是，为每个渠道包产生不同的 UMENG_CHANNEL_VALUE 的值。
+    }
+    */
 
 }
 //   全写为  implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.13.2'
