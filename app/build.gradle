@@ -23,7 +23,7 @@ android { //配置android构建选项
         versionCode 1 //版本号
         versionName "1.0" //版本名
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" //测试环境
-
+        //5.0后使用，5.0前请在appcation里注册
         //多dex分包 解决引用了多个jar包，导致Dalvik Executable (DEX)文件的总方法数超出65536的限制,如com.mob.commons.MOBAPM编译报错
         multiDexEnabled true
 
@@ -60,7 +60,6 @@ android { //配置android构建选项
     }
 
 
-
     //重构资源目录
     sourceSets {//代码源文件配置。可以列出多个目录，Gradle将使用所有目录来收集
         main {//封装main代码集的配置
@@ -80,6 +79,15 @@ android { //配置android构建选项
             //aidl.srcDirs = ['src/main/aidl', 'other/aidl']
             //默认情况下，Android Studio为main源创建AndroidManifest，设置在src/main/目录中。
             //manifest.srcFile 'other/AndroidManifest.xml'
+//            if (rootProject.ext.modele["isModule"]) {
+//                manifest.srcFile 'src/main/AndroidManifest.xml'
+//            } else {
+//                manifest.srcFile 'src/main/releaseManifest/AndroidManifest.xml'
+//                java {//    排除java/debug文件夹下的所有文件
+//
+//                    exclude '*module'
+//                }
+//            }
         }
     }
     /*
@@ -173,7 +181,7 @@ android { //配置android构建选项
         release.setRoot('build-types/release') // 指定release模式的路径
     }*/
     /*
-    //关闭Android Studio的PNG合法性检查
+    //关闭Android Studio的PNG合法性检查 ecilpse的点9图在导入idea时会报错，直接使用这个略过
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
     // 程序在编译的时候会检查lint，有任何错误提示会停止build，我们可以关闭这个开关
@@ -296,7 +304,8 @@ dependencies {
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
 
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2' //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    //1.0.5及以前版本的老用户升级需谨慎，API改动过大
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2' //没有使用特殊Header，可以不加这行
 
     implementation 'androidx.emoji:emoji:1.1.0'
